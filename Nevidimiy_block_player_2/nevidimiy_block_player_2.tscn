@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd6fo7clmx65n"]
+
+[ext_resource type="Script" path="res://Nevidimiy_block_player_2/nevidimiy_block_player_2.gd" id="1_daw06"]
+[ext_resource type="Texture2D" uid="uid://fn4cjaqs2mbt" path="res://Nevidimiy_block/nevidimiy_block.png" id="2_wov6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qv8a"]
+size = Vector2(48, 48)
+
+[node name="nevidimiy_block_player_2" type="StaticBody2D"]
+top_level = true
+z_index = 2
+collision_layer = 8192
+script = ExtResource("1_daw06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wov6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2qv8a")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

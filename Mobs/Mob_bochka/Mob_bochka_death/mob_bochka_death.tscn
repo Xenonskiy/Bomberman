@@ -1,0 +1,92 @@
+[gd_scene load_steps=15 format=3 uid="uid://bng4wj2i3mwu4"]
+
+[ext_resource type="Texture2D" uid="uid://wqp7owm1y0st" path="res://Mobs/Mob_bochka/Mob_bochka_death/Mob_bochka_death.png" id="1_uofba"]
+[ext_resource type="Texture2D" uid="uid://bbrofn7mdkh6o" path="res://Mobs/Mob_bochka/Mob_bochka_death/400.png" id="2_maxps"]
+[ext_resource type="Script" path="res://Mobs/Mob_bochka/Mob_bochka_death/mob_bochka_death.gd" id="3_n8oyg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g80qu"]
+atlas = ExtResource("1_uofba")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anovm"]
+atlas = ExtResource("1_uofba")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5lxb"]
+atlas = ExtResource("1_uofba")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6tb2"]
+atlas = ExtResource("1_uofba")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhfej"]
+atlas = ExtResource("1_uofba")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlehs"]
+atlas = ExtResource("1_uofba")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svtoe"]
+atlas = ExtResource("1_uofba")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htv63"]
+atlas = ExtResource("2_maxps")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mcuq"]
+atlas = ExtResource("2_maxps")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fewc7"]
+atlas = ExtResource("2_maxps")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wjbjy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g80qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anovm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5lxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6tb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhfej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tlehs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svtoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htv63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mcuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fewc7")
+}],
+"loop": false,
+"name": &"mob_bochka_death",
+"speed": 3.0
+}]
+
+[node name="mob_bochka_death" type="AnimatedSprite2D"]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_wjbjy")
+animation = &"mob_bochka_death"
+autoplay = "mob_bochka_death"
+script = ExtResource("3_n8oyg")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

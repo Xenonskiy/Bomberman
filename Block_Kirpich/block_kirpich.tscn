@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://em7lhue46ev8"]
+
+[ext_resource type="Texture2D" uid="uid://bl74miyxyxuhi" path="res://Block_Kirpich/tile_kirpich.png" id="1_bedr2"]
+[ext_resource type="Script" path="res://Block_Kirpich/block_kirpich.gd" id="1_lqnen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooqia"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0u2d8"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25ak5"]
+size = Vector2(48, 48)
+
+[node name="Block_Kirpich" type="StaticBody2D"]
+z_index = 2
+collision_layer = 4
+collision_mask = 144
+script = ExtResource("1_lqnen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ooqia")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bedr2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0u2d8")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_0u2d8")
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource("RectangleShape2D_25ak5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.12
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
+[connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]
+[connection signal="body_exited" from="Area2D3" to="." method="_on_area_2d_3_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

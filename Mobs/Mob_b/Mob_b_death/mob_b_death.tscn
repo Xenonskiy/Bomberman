@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://d13klyw1mmdsw"]
+
+[ext_resource type="Texture2D" uid="uid://buafudm11nstm" path="res://Mobs/Mob_roja/Mob_roja_death/4000.png" id="1_uchku"]
+[ext_resource type="Script" path="res://Mobs/Mob_b/Mob_b_death/mob_b_death.gd" id="2_61bck"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke6sc"]
+atlas = ExtResource("1_uchku")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8i0v"]
+atlas = ExtResource("1_uchku")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7xlu"]
+atlas = ExtResource("1_uchku")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krorq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke6sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8i0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7xlu")
+}],
+"loop": false,
+"name": &"mob_b_death",
+"speed": 3.0
+}]
+
+[node name="mob_b_death" type="AnimatedSprite2D"]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_krorq")
+animation = &"mob_b_death"
+autoplay = "mob_b_death"
+script = ExtResource("2_61bck")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

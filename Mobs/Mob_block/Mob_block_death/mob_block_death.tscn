@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd1ld2okvo3kt"]
+
+[ext_resource type="Texture2D" uid="uid://cmqhnefggby2v" path="res://Mobs/Mob_shar/Mob_shar_death/100.png" id="1_4g5if"]
+[ext_resource type="Script" path="res://Mobs/Mob_block/Mob_block_death/mob_block_death.gd" id="2_83rmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5xuf"]
+atlas = ExtResource("1_4g5if")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wflh3"]
+atlas = ExtResource("1_4g5if")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wibmh"]
+atlas = ExtResource("1_4g5if")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njst6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5xuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wflh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wibmh")
+}],
+"loop": false,
+"name": &"mob_block_death",
+"speed": 3.0
+}]
+
+[node name="mob_block_death" type="AnimatedSprite2D"]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_njst6")
+animation = &"mob_block_death"
+autoplay = "mob_block_death"
+script = ExtResource("2_83rmt")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

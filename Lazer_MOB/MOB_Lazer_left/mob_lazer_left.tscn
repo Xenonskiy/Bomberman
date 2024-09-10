@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6oybwvf71cms"]
+
+[ext_resource type="Script" path="res://Lazer_MOB/MOB_Lazer_left/mob_lazer_left.gd" id="1_g5kbe"]
+[ext_resource type="Texture2D" uid="uid://bt6t3clbxxlap" path="res://Lazer/sprite_dla_lazera.png" id="2_p1257"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qowg"]
+size = Vector2(47, 47)
+
+[node name="mob_lazer_left" type="StaticBody2D"]
+top_level = true
+collision_layer = 128
+collision_mask = 68
+script = ExtResource("1_g5kbe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.002, 0.002)
+scale = Vector2(0.979167, 0.979167)
+texture = ExtResource("2_p1257")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.002, 0.002)
+shape = SubResource("RectangleShape2D_5qowg")

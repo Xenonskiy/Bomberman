@@ -1,0 +1,92 @@
+[gd_scene load_steps=15 format=3 uid="uid://bevyigglxduly"]
+
+[ext_resource type="Texture2D" uid="uid://s4d2v2cioy6x" path="res://Mobs/Mob_prividenie/Mob_prividenie_death/Mob_prividenie_death.png" id="1_8qari"]
+[ext_resource type="Texture2D" uid="uid://dp8qto88txyt2" path="res://Mobs/Mob_prividenie/Mob_prividenie_death/2000.png" id="2_pown1"]
+[ext_resource type="Script" path="res://Mobs/Mob_prividenie/Mob_prividenie_death/mob_prividenie_death.gd" id="3_74wwr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcn3v"]
+atlas = ExtResource("1_8qari")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyqxm"]
+atlas = ExtResource("1_8qari")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldro5"]
+atlas = ExtResource("1_8qari")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3dnd"]
+atlas = ExtResource("1_8qari")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkssj"]
+atlas = ExtResource("1_8qari")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lokx3"]
+atlas = ExtResource("1_8qari")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4hll"]
+atlas = ExtResource("1_8qari")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kufvb"]
+atlas = ExtResource("2_pown1")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2grv"]
+atlas = ExtResource("2_pown1")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pujdk"]
+atlas = ExtResource("2_pown1")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwnl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcn3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyqxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldro5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3dnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkssj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lokx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4hll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kufvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2grv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pujdk")
+}],
+"loop": false,
+"name": &"mob_prividenie_death",
+"speed": 3.0
+}]
+
+[node name="mob_prividenie_death" type="AnimatedSprite2D"]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_qwnl8")
+animation = &"mob_prividenie_death"
+autoplay = "mob_prividenie_death"
+script = ExtResource("3_74wwr")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
