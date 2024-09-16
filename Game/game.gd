@@ -27,9 +27,12 @@ Vector2(72,312),
 Vector2(168,312)]
  
 func _ready():
-	$Timer.start()
+	# Включение и выключение второго игрока
+	if Global.vtoroy_player == false:
+		$player_2.queue_free()
 	
-	# Переменная, содержащая количество кирпичных блоков, в зависимости от номера стадии
+	$Timer.start()
+		# Переменная, содержащая количество кирпичных блоков, в зависимости от номера стадии
 	var kolichestvo_blokov_dla_stadii: int = 50 + (5 * Global.stage_nomer)
 	
 	# Добавление в массив Global.coordinates_with_block_kirpich случайные элементы из массива Global.all_coordinates
@@ -330,6 +333,7 @@ func _on_quit_pressed():
 func _on_menu_pressed():
 	get_tree().paused = false
 	$CanvasLayer/PauseMenu.visible = false
+	Global.vtoroy_player == false
 	Global.stage_nomer = 1
 	Global.mob_pulki = false
 	Global.novie_mobi = false

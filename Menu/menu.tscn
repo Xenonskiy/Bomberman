@@ -437,17 +437,12 @@ offset_bottom = 616.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 36
 selected = 0
-item_count = 5
+item_count = 3
 popup/item_0/text = "1"
-popup/item_0/id = 1
-popup/item_1/text = "1.5"
-popup/item_1/id = 2
-popup/item_2/text = "2"
-popup/item_2/id = 3
-popup/item_3/text = "2.5"
-popup/item_3/id = 4
-popup/item_4/text = "3"
-popup/item_4/id = 5
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
 
 [node name="Item_flamepass" type="Sprite2D" parent="."]
 position = Vector2(891, 671)

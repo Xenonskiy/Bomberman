@@ -57,13 +57,10 @@ func _on_option_button_enemy_item_selected(index):
 	if index == 0:
 		Global.more_enemy = 1
 	elif index == 1:
-		Global.more_enemy = 1.5
-	elif index == 2:
 		Global.more_enemy = 2
-	elif index == 3:
-		Global.more_enemy = 2.5
-	elif index == 4:
+	elif index == 2:
 		Global.more_enemy = 3
+
 
 func _on_check_box_6_toggled(toggled_on):
 	if toggled_on:
