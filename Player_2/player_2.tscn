@@ -213,7 +213,7 @@ volume_db = -5.0
 
 [node name="ShagiVertical" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_r8vjg")
-volume_db = -5.0
+volume_db = -1.0
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_waryu")

@@ -12,6 +12,7 @@ const mob_prividenie_preload = preload("res://Mobs/Mob_prividenie/mob_prividenie
 const mob_block_preload = preload("res://Mobs/Mob_block/mob_block.tscn")
 const mob_b_preload = preload("res://Mobs/Mob_b/mob_b.tscn")
 
+
 var svobodnie_koordinati_rjadom_s_igrokom: Array[Vector2] = [Vector2(72,168),
 Vector2(120,168),
 Vector2(168,168),
@@ -26,14 +27,14 @@ Vector2(72,312),
 Vector2(168,312)]
  
 func _ready():
-	# Включение и выключение второго игрока
-	if Global.vtoroy_player == false:
-		$player_2.queue_free()
-	
 	$Timer.start()
-	# Добавление в массив Global.coordinates_with_block_kirpich 50 случайных элементов из массива Global.all_coordinates
+	
+	# Переменная, содержащая количество кирпичных блоков, в зависимости от номера стадии
+	var kolichestvo_blokov_dla_stadii: int = 50 + (5 * Global.stage_nomer)
+	
+	# Добавление в массив Global.coordinates_with_block_kirpich случайные элементы из массива Global.all_coordinates
 	var unique_indices = []
-	while Global.coordinates_with_block_kirpich.size() < 50 and unique_indices.size() < Global.all_coordinates.size():# Цифра - это сколько блоков будет на сцене
+	while Global.coordinates_with_block_kirpich.size() < kolichestvo_blokov_dla_stadii and unique_indices.size() < Global.all_coordinates.size():
 		var random_index = randi() % Global.all_coordinates.size()
 		if !unique_indices.has(random_index):
 			Global.coordinates_with_block_kirpich.append(Global.all_coordinates[random_index])
@@ -73,11 +74,11 @@ func _ready():
 	if Global.stage_nomer == 1:
 		item = $item_lazer
 	elif Global.stage_nomer == 2:
-		item = $item_lazer
+		item = $item_b
 	elif Global.stage_nomer == 3:
 		item = $item_speed
 	elif Global.stage_nomer == 4:
-		item = $item_b
+		item = $item_lazer
 	elif Global.stage_nomer == 5:
 		item = $item_lazer
 	elif Global.stage_nomer == 6:
@@ -101,18 +102,30 @@ func _ready():
 	# Создание мобов в начале игры. В зависимости от стадии
 	if Global.stage_nomer == 1:
 		mob_shar_spawn()
+		mob_shar_spawn()
+		mob_shar_spawn()
+		mob_shar_spawn()
+		mob_shar_spawn()
+		mob_shar_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
 			mob_bomb_spawn()
 	elif Global.stage_nomer == 2:
 		mob_shar_spawn()
+		mob_shar_spawn()
+		mob_shar_spawn()
+		mob_luk_spawn()
+		mob_luk_spawn()
 		mob_luk_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
-			#mob_bomb_spawn()
+			mob_bomb_spawn()
 	elif Global.stage_nomer == 3:
 		mob_shar_spawn()
+		mob_shar_spawn()
 		mob_luk_spawn()
+		mob_luk_spawn()
+		mob_bochka_spawn()
 		mob_bochka_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
@@ -121,6 +134,8 @@ func _ready():
 		mob_shar_spawn()
 		mob_luk_spawn()
 		mob_bochka_spawn()
+		mob_bochka_spawn()
+		mob_kolobok_spawn()
 		mob_kolobok_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
@@ -129,7 +144,9 @@ func _ready():
 		mob_shar_spawn()
 		mob_luk_spawn()
 		mob_bochka_spawn()
+		mob_bochka_spawn()
 		mob_kolobok_spawn()
+		mob_roja_spawn()
 		mob_roja_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
@@ -141,16 +158,19 @@ func _ready():
 		mob_kolobok_spawn()
 		mob_roja_spawn()
 		mob_meduza_spawn()
+		mob_meduza_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
 			mob_bomb_spawn()
 	elif Global.stage_nomer == 7:
-		mob_shar_spawn()
+		mob_luk_spawn()
 		mob_luk_spawn()
 		mob_bochka_spawn()
 		mob_kolobok_spawn()
 		mob_roja_spawn()
 		mob_meduza_spawn()
+		mob_prividenie_spawn()
+		mob_prividenie_spawn()
 		mob_prividenie_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
@@ -164,13 +184,14 @@ func _ready():
 		mob_meduza_spawn()
 		mob_prividenie_spawn()
 		mob_monetka_spawn()
+		mob_monetka_spawn()
 		if Global.novie_mobi == true:
 			mob_block_spawn()
 			mob_bomb_spawn()
 	elif Global.stage_nomer == 9:
-		mob_shar_spawn()
 		mob_luk_spawn()
 		mob_bochka_spawn()
+		mob_kolobok_spawn()
 		mob_kolobok_spawn()
 		mob_roja_spawn()
 		mob_meduza_spawn()
@@ -184,11 +205,11 @@ func _ready():
 		mob_shar_spawn()
 		mob_luk_spawn()
 		mob_bochka_spawn()
+		mob_bochka_spawn()
 		mob_kolobok_spawn()
 		mob_roja_spawn()
 		mob_meduza_spawn()
 		mob_prividenie_spawn()
-		mob_monetka_spawn()
 		mob_monetka_spawn()
 		mob_monetka_spawn()
 		if Global.novie_mobi == true:
@@ -204,7 +225,7 @@ func blok_kirpich_spawn():
 		
 # Создание мобов-шаров на свободных от кирпичных блоках координатах
 func mob_shar_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_shar_new = mob_shar_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_shar_new.position = Global.svobodnie_coordinates[random_index]
@@ -212,7 +233,7 @@ func mob_shar_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_shar_new) 
 		
 func mob_monetka_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_monetka_new = mob_monetka_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_monetka_new.position = Global.svobodnie_coordinates[random_index]
@@ -220,7 +241,7 @@ func mob_monetka_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_monetka_new)
 
 func mob_bochka_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_bochka_new = mob_bochka_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_bochka_new.position = Global.svobodnie_coordinates[random_index]
@@ -228,7 +249,7 @@ func mob_bochka_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_bochka_new)
 
 func mob_luk_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_luk_new = mob_luk_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_luk_new.position = Global.svobodnie_coordinates[random_index]
@@ -236,7 +257,7 @@ func mob_luk_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_luk_new)
 
 func mob_kolobok_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_kolobok_new = mob_kolobok_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_kolobok_new.position = Global.svobodnie_coordinates[random_index]
@@ -244,7 +265,7 @@ func mob_kolobok_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_kolobok_new)
 
 func mob_roja_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_roja_new = mob_roja_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_roja_new.position = Global.svobodnie_coordinates[random_index]
@@ -252,7 +273,7 @@ func mob_roja_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_roja_new)
 
 func mob_meduza_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_meduza_new = mob_meduza_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_meduza_new.position = Global.svobodnie_coordinates[random_index]
@@ -260,7 +281,7 @@ func mob_meduza_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_meduza_new)
 
 func mob_prividenie_spawn():
-	for i in range(6 * Global.more_enemy):
+	for i in range(1 * Global.more_enemy):
 		var mob_prividenie_new = mob_prividenie_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_prividenie_new.position = Global.svobodnie_coordinates[random_index]
@@ -276,15 +297,21 @@ func mob_block_spawn():
 		Global.massiv_vse_sozdannie_mobi.append(mob_block_new)
 		
 func mob_bomb_spawn():
-	for i in range(4 * Global.more_enemy):
+	for i in range(3 * Global.more_enemy):
 		var mob_b_new = mob_b_preload.instantiate()
 		var random_index = randi_range(0, Global.svobodnie_coordinates.size() - 1)
 		mob_b_new.position = Global.svobodnie_coordinates[random_index]
 		$Mobs.add_child(mob_b_new)
 		Global.massiv_vse_sozdannie_mobi.append(mob_b_new)
 
+
 # Когда в игре истечет время 200 секунд, появятся монетки
 func _on_timer_timeout():
+	mob_monetka_spawn()
+	mob_monetka_spawn()
+	mob_monetka_spawn()
+	mob_monetka_spawn()
+	mob_monetka_spawn()
 	mob_monetka_spawn()
 	mob_monetka_spawn()
 
@@ -312,7 +339,6 @@ func _on_menu_pressed():
 	Global.chislo_gizney = 11
 	Global.player_death = false
 	Global.more_enemy = 1
-	Global.vtoroy_player = false
 	Global.item_flamepass = false
 	Global.speed = 170 
 	Global.player_skvoz_steni = 76 
@@ -321,25 +347,15 @@ func _on_menu_pressed():
 	Global.vzal_item_knopka = false
 	Global.ochki = 0
 	Global.maximum_b = 1
-	Global.maximum_b_player_2 = 1
-	
-	
-	
-	
 	Global.vkluchit_Zvuk_B = false
 	Global.massiv_vse_sozdannie_mobi.clear()
 	Global.coordinates_with_block_kirpich.clear()
 	Global.svobodnie_coordinates.clear()
 	Global.massiav_s_b.clear()
-	Global.massiav_s_b_player_2.clear()
 	Global.massiv_nevidimiy_block.clear()
-	Global.massiv_nevidimiy_block_player_2.clear()
 	Global.massiv_kuda_ustanovlenna_poslednaa_b = []
-	Global.massiv_kuda_ustanovlenna_poslednaa_b_player_2 = []
 	Global.coordinate_kuda_ustanovlenna_poslednaa_b = null
-	Global.coordinate_kuda_ustanovlenna_poslednaa_b_player_2 = null
 	Global.sozdannih_b = 0 
-	Global.sozdannih_b_player_2 = 0
 	Global.massiv_block_mobi.clear()
 	Global.kamenniy_block_s_blokami_ot_mobov = [
 	Vector2(24, 120),
@@ -506,3 +522,9 @@ func _on_menu_pressed():
 	Vector2(1272, 600),
 	Vector2(1368, 600)]
 	get_tree().change_scene_to_file("res://Menu/menu.tscn")
+
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()
+func _on_audio_stream_player_2d_2_finished():
+	$AudioStreamPlayer2D2.play()
