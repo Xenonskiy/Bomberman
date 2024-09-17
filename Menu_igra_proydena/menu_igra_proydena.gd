@@ -7,6 +7,7 @@ func _ready():
 func _on_sound_igra_proydena_finished():
 	Global.nagalKnopkuB = false
 	Global.player_death = false
+	Global.vtoroy_player = false
 	Global.mob_pulki = false
 	Global.novie_mobi = false
 	Global.vkluchit_Zvuk_B = false
@@ -22,7 +23,7 @@ func _on_sound_igra_proydena_finished():
 	Global.chislo_gizney = 11
 	Global.dlina_lazera = 48
 	Global.more_enemy = 1
-	Global.speed = 170
+	Global.speed = 130
 	Global.dlina_lazera_nomer = 1
 	Global.maximum_b = 1
 	Global.maximum_b_player_2 = 1

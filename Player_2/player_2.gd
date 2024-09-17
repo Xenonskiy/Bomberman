@@ -19,7 +19,7 @@ func _ready():
 func _physics_process(delta):
 	if Global.vkluchit_Zvuk_B == true:
 		$AudioStreamPlayer2.play()
-		Global.Vkluchit_Zvuk_B = false
+		Global.vkluchit_Zvuk_B = false
 	
 	var direction: Vector2 = Vector2.ZERO
 	if Global.player_voshel_v_vorota == false and Global.player_death == false:
@@ -282,15 +282,16 @@ func _on_sound_player_death_2_finished():
 		get_tree().change_scene_to_file("res://Menu_game_over/menu_game_over.tscn")
 		Global.chislo_gizney = 6
 		Global.more_enemy = 1
+		Global.vtoroy_player = false
 		Global.nagalKnopkuB = false
 		Global.dlina_lazera = 48
 		Global.dlina_lazera_nomer = 1
-		Global.Speed = 170
+		Global.speed = 130
 		Global.maximum_b = 1
 		Global.maximum_b_player_2 = 1
 		Global.mob_pulki = false
 		Global.novie_mobi = false
-		Global.Vkluchit_Zvuk_B = false
+		Global.vkluchit_Zvuk_B = false
 		Global.vtoroy_player = false
 		Global.player_skvoz_steni = 76
 		

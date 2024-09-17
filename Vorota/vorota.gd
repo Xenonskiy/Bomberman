@@ -31,7 +31,7 @@ func _on_stage_proydena_finished():
 		Global.more_enemy = 1
 		Global.dlina_lazera = 48
 		Global.dlina_lazera_nomer = 1
-		Global.speed = 170
+		Global.speed = 130
 		Global.maximum_b = 1
 		Global.maximum_b_player_2 = 1
 		Global.mob_pulki = false
@@ -41,7 +41,6 @@ func _on_stage_proydena_finished():
 		Global.stage_nomer = 1
 		Global.player_death = false
 		Global.item_flamepass = false
-		Global.speed = 170 
 		Global.vzal_item_knopka = false
 		get_tree().change_scene_to_file("res://Menu_igra_proydena/menu_igra_proydena.tscn")
 	else:

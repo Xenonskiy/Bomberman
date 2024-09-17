@@ -39,7 +39,7 @@ func _on_option_button_bomb_item_selected(index):
 	Global.maximum_b_player_2 = index + 1
 
 func _on_option_button_speed_item_selected(index):
-	Global.speed = 170 + (30 * index)
+	Global.speed = 130 + (20 * index)
 
 func _on_check_box_4_toggled(toggled_on):
 	if toggled_on:

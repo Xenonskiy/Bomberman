@@ -333,7 +333,7 @@ func _on_quit_pressed():
 func _on_menu_pressed():
 	get_tree().paused = false
 	$CanvasLayer/PauseMenu.visible = false
-	Global.vtoroy_player == false
+	Global.vtoroy_player = false
 	Global.stage_nomer = 1
 	Global.mob_pulki = false
 	Global.novie_mobi = false
@@ -344,7 +344,7 @@ func _on_menu_pressed():
 	Global.player_death = false
 	Global.more_enemy = 1
 	Global.item_flamepass = false
-	Global.speed = 170 
+	Global.speed = 130 
 	Global.player_skvoz_steni = 76 
 	Global.dlina_lazera = 48 
 	Global.dlina_lazera_nomer = 1 

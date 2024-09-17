@@ -11,6 +11,7 @@ func _on_sound_game_over_finished():
 	Global.mob_pulki = false
 	Global.vkluchit_Zvuk_B = false
 	Global.ochki = 0
+	Global.vtoroy_player = false
 	Global.more_enemy = 1
 	Global.massiv_vse_sozdannie_mobi.clear()
 	Global.coordinates_with_block_kirpich.clear()
@@ -22,7 +23,7 @@ func _on_sound_game_over_finished():
 	Global.massiv_block_mobi.clear()
 	Global.chislo_gizney = 6
 	Global.dlina_lazera = 48
-	Global.speed = 170
+	Global.speed = 130 
 	Global.dlina_lazera_nomer = 1
 	Global.maximum_b = 1
 	Global.maximum_b_player_2 = 1
