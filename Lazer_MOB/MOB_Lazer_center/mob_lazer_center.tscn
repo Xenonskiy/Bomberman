@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://noyatabl8olv"]
+[gd_scene load_steps=15 format=3 uid="uid://noyatabl8olv"]
 
 [ext_resource type="Script" path="res://Lazer_MOB/MOB_Lazer_center/mob_lazer_center.gd" id="1_vqrmw"]
 [ext_resource type="Texture2D" uid="uid://djk04ady4rsfk" path="res://Lazer_MOB/MOB_Lazer_center/MOB_Lazer_center.png" id="2_637vr"]
@@ -70,8 +70,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6j72"]
 size = Vector2(44, 44)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpgbe"]
-size = Vector2(44, 44)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_simwp"]
+size = Vector2(50, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2osd"]
+size = Vector2(20, 50)
 
 [node name="mob_lazer_center" type="StaticBody2D"]
 top_level = true
@@ -89,12 +92,15 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_x6j72")
 
-[node name="Area2D2" type="Area2D" parent="."]
-collision_mask = 256
+[node name="Area2D3" type="Area2D" parent="."]
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource("RectangleShape2D_gpgbe")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource("RectangleShape2D_simwp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource("RectangleShape2D_p2osd")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]

@@ -23,8 +23,8 @@ var player_death: bool = false # Для того чтобы остановить
 
 var coordinate_kuda_ustanovlenna_poslednaa_b = null # В эту переменную записывается координата последней установленной бомбы Первого игрока, чтобы в одно и тоже место нельзя было устанавливать несколько бомб
 var coordinate_kuda_ustanovlenna_poslednaa_b_player_2 = null # В эту переменную записывается координата последней установленной бомбы Второго игрока, чтобы в одно и тоже место нельзя было устанавливать несколько бомб
-var massiv_kuda_ustanovlenna_poslednaa_b = []
-var massiv_kuda_ustanovlenna_poslednaa_b_player_2 = []
+var massiv_kuda_ustanovlenna_poslednaa_b = [] # Координаты
+var massiv_kuda_ustanovlenna_poslednaa_b_player_2 = [] # Координаты
 
 # Создание лазера для Первого игрока, Второго игрока, моба-бомбы
 # Для первого игрока

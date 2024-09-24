@@ -1,10 +1,5 @@
 extends StaticBody2D
 
-var lazer_up = preload("res://Lazer/Lazer_up/lazer_up.tscn")
-var lazer_down = preload("res://Lazer/Lazer_down/lazer_down.tscn")
-var lazer_left = preload("res://Lazer/Lazer_left/lazer_left.tscn")
-var lazer_right = preload("res://Lazer/Lazer_right/lazer_right.tscn")
-
 var lazer_gorizontal = preload("res://Lazer/Lazer_gorizontal/lazer_gorizontal.tscn")
 var lazer_vertical = preload("res://Lazer/Lazer_vertical/lazer_vertical.tscn")
 var lazer_konec_right = preload("res://Lazer/Lazer_konec_right/lazer_konec_right.tscn")
@@ -46,22 +41,7 @@ func _process(delta):
 			destroy()
 			
 func destroy():
-	var new_lazer_up = lazer_up.instantiate()
-	get_parent().add_child(new_lazer_up)
-	new_lazer_up.global_position = global_position
 		
-	var new_lazer_down = lazer_down.instantiate()
-	get_parent().add_child(new_lazer_down)
-	new_lazer_down.global_position = global_position
-	
-	var new_lazer_left = lazer_left.instantiate()
-	get_parent().add_child(new_lazer_left)
-	new_lazer_left.global_position = global_position
-	
-	var new_lazer_right = lazer_right.instantiate()
-	get_parent().add_child(new_lazer_right)
-	new_lazer_right.global_position = global_position
-	
 	# Лазер вправо ##########################################################
 	# В глобальный массив помещаются координаты в которые может 
 	# распространиться лазер вправо, центральная координата не добавляется

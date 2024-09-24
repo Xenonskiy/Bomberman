@@ -7,9 +7,12 @@ func destroy():
 	for mob in mob_list:
 		mob.destroy()
 	mob_list.clear()
-	
-	
 
+# Эта функция для уничтожения кирпичного блока от моба бомбы. Мобы, которые 
+# находятся в кирпичных блоках не будут уничтожены
+func destroy_for_mob_b():
+	$Timer.start()
+	
 func _on_timer_timeout():
 	# Получаем координаты текущего блока
 	var block_position = self.get_position()

@@ -5,5 +5,4 @@ var mob_b_death: String = "mob_b_death"
 
 func _on_animation_finished():
 	Global.ochki += 4000
-	print(Global.ochki)
 	queue_free()

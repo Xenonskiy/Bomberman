@@ -2,10 +2,6 @@ extends CharacterBody2D
 
 var has_destroyed = false # Чтобы функция запускалась 1 раз. Без этой проверки иногда два раза начисляются очки за моба.
 var pulka = preload("res://Pulka/pulka.tscn")
-var lazer_up = preload("res://Lazer_MOB/MOB_Lazer_up/mob_lazer_up.tscn")
-var lazer_down = preload("res://Lazer_MOB/MOB_Lazer_down/mob_lazer_down.tscn")
-var lazer_left = preload("res://Lazer_MOB/MOB_Lazer_left/mob_lazer_left.tscn")
-var lazer_right = preload("res://Lazer_MOB/MOB_Lazer_right/mob_lazer_right.tscn")
 var lazer_gorizontal = preload("res://Lazer_MOB/MOB_Lazer_gorizontal/mob_lazer_gorizontal.tscn")
 var lazer_vertical = preload("res://Lazer_MOB/MOB_Lazer_vertical/mob_lazer_vertical.tscn")
 var lazer_konec_right = preload("res://Lazer_MOB/MOB_Lazer_konec_right/mob_lazer_konec_right.tscn")
@@ -131,22 +127,6 @@ func _on_timer_2_timeout():
 			nearest_point = point
 	coordinate_kuda_ustanovlenna_poslednaa_b_MOB = nearest_point
 	
-	var new_lazer_up = lazer_up.instantiate()
-	get_parent().add_child(new_lazer_up)
-	new_lazer_up.global_position = global_position
-		
-	var new_lazer_down = lazer_down.instantiate()
-	get_parent().add_child(new_lazer_down)
-	new_lazer_down.global_position = global_position
-	
-	var new_lazer_left = lazer_left.instantiate()
-	get_parent().add_child(new_lazer_left)
-	new_lazer_left.global_position = global_position
-	
-	var new_lazer_right = lazer_right.instantiate()
-	get_parent().add_child(new_lazer_right)
-	new_lazer_right.global_position = global_position
-	
 	# Лазер вправо ##########################################################
 	# В глобальный массив помещаются координаты в которые может 
 	# распространиться лазер вправо, центральная координата не добавляется
@@ -164,10 +144,10 @@ func _on_timer_2_timeout():
 	# В глобальный массив помещаю координаты для лазера, которые заняты блоками
 	for coord in Global.right_coordinate_dla_lazera_MOB:
 		# Проверяем, присутствует ли этот элемент во втором и третьем массивах
-		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov:
+		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b_player_2: 
 			# Если элемент присутствует во всех массивах, добавляем его в результирующий массив
 			Global.right_coordinate_dla_lazera_zanatie_blokami_MOB.append(coord)
-			
+						
 	# В массив будут добавлены координаты левее блоков
 	for coordinate in Global.right_coordinate_dla_lazera_MOB:
 		# Флаг, указывающий, что текущий элемент подходит по условию
@@ -211,9 +191,10 @@ func _on_timer_2_timeout():
 	# В глобальный массив помещаю координаты для лазера, которые заняты блоками
 	for coord in Global.left_coordinate_dla_lazera_MOB:
 		# Проверяем, присутствует ли этот элемент во втором и третьем массивах
-		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov:
+		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b_player_2: 
 			# Если элемент присутствует во всех массивах, добавляем его в результирующий массив
 			Global.left_coordinate_dla_lazera_zanatie_blokami_MOB.append(coord)
+			
 			
 	# В массив будут добавлены координаты левее блоков
 	for coordinate in Global.left_coordinate_dla_lazera_MOB:
@@ -258,10 +239,10 @@ func _on_timer_2_timeout():
 	# В глобальный массив помещаю координаты для лазера, которые заняты блоками
 	for coord in Global.up_coordinate_dla_lazera_MOB:
 		# Проверяем, присутствует ли этот элемент во втором и третьем массивах
-		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov:
+		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b_player_2: 
 			# Если элемент присутствует во всех массивах, добавляем его в результирующий массив
 			Global.up_coordinate_dla_lazera_zanatie_blokami_MOB.append(coord)
-			
+						
 	# В массив будут добавлены координаты выше блоков
 	for coordinate in Global.up_coordinate_dla_lazera_MOB:
 		# Флаг, указывающий, что текущий элемент подходит по условию
@@ -310,9 +291,11 @@ func _on_timer_2_timeout():
 	# В глобальный массив помещаю координаты для лазера, которые заняты блоками
 	for coord in Global.down_coordinate_dla_lazera_MOB:
 		# Проверяем, присутствует ли этот элемент во втором и третьем массивах
-		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov:
+		if coord in Global.coordinates_with_block_kirpich or coord in Global.kamenniy_block_s_blokami_ot_mobov or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b or coord in Global.massiv_kuda_ustanovlenna_poslednaa_b_player_2:  
 			# Если элемент присутствует во всех массивах, добавляем его в результирующий массив
 			Global.down_coordinate_dla_lazera_zanatie_blokami_MOB.append(coord)
+			
+						
 			
 	# В массив будут добавлены координаты выше блоков
 	for coordinate in Global.down_coordinate_dla_lazera_MOB:

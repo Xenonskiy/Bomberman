@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4kxfji3ygljn"]
+[gd_scene load_steps=13 format=3 uid="uid://b4kxfji3ygljn"]
 
 [ext_resource type="Script" path="res://Lazer_MOB/MOB_Lazer_konec_up/mob_lazer_konec_up.gd" id="1_n0ku0"]
 [ext_resource type="Texture2D" uid="uid://cdc3qljmh2cod" path="res://Lazer_MOB/MOB_Lazer_konec_up/MOB_Lazer_konec_up.png" id="2_dggg0"]
@@ -70,9 +70,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ussp4"]
 size = Vector2(46, 46)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwu8p"]
-size = Vector2(46, 46)
-
 [node name="mob_lazer_konec_up" type="StaticBody2D"]
 top_level = true
 collision_layer = 16384
@@ -89,12 +86,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ussp4")
 
-[node name="Area2D2" type="Area2D" parent="."]
-collision_mask = 256
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-shape = SubResource("RectangleShape2D_dwu8p")
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
