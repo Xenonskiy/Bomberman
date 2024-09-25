@@ -5,10 +5,10 @@
 [ext_resource type="AudioStream" uid="uid://bimxaox07g0ai" path="res://Items/sfx-5.mp3" id="3_ggf2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u5gb"]
-size = Vector2(47, 47)
+size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i06am"]
-size = Vector2(47, 47)
+size = Vector2(40, 40)
 
 [node name="item_flamepass" type="StaticBody2D"]
 z_index = 1
